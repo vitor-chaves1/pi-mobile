@@ -4,7 +4,8 @@ import CampoInput from "../components/CampoInput";
 import { Text } from "react-native-paper";
 import { useState } from "react";
 
-const Perfil = (props) => {
+const Perfil = ({route}) => {
+    const { dados, handlers } = route.params;
     const [editable, setEditable] = useState(false)
 
     if (editable) {
@@ -24,12 +25,12 @@ const Perfil = (props) => {
                 <ScrollView contentContainerStyle={{flex:1,paddingBottom:8}}>
                     <View style={{ flex:1, marginHorizontal: 16, marginTop: 8, backgroundColor: '#f0f0f0', borderRadius: 8 }}>
                         <View style={{ padding: 8, flex: 1 }}>
-                            <CampoInput label='Nome' value={props.dados.nome} editable={editable} onChangeText={props.handlers.handleNome} />
-                            <CampoInput label='Email' value={props.dados.email} editable={editable} onChangeText={props.handlers.handleEmail} keyboardType='email-address' />
-                            <CampoInput label='Telefone' value={props.dados.telefone} editable={editable} onChangeText={props.handlers.handleTelefone} keyboardType='phone-pad' />
-                            <CampoInput label='CEP' value={props.dados.cep} editable={editable} onChangeText={props.handlers.handleCep} keyboardType='numeric' />
-                            <CampoInput label='Endereco' value={props.dados.endereco} editable={editable} onChangeText={props.handlers.handleEndereco} />
-                            <CampoInput label='Complemento' value={props.dados.complemento} editable={editable} onChangeText={props.handlers.handleComplemento} />
+                            <CampoInput label='Nome' value={route.params.dados.nome} editable={editable} onChangeText={route.params.handlers.handleNome} />
+                            <CampoInput label='Email' value={route.params.dados.email} editable={editable} onChangeText={route.params.handlers.handleEmail} keyboardType='email-address' />
+                            <CampoInput label='Telefone' value={route.params.dados.telefone} editable={editable} onChangeText={route.params.handlers.handleTelefone} keyboardType='phone-pad' />
+                            <CampoInput label='CEP' value={route.params.dados.cep} editable={editable} onChangeText={route.params.handlers.handleCep} keyboardType='numeric' />
+                            <CampoInput label='Endereco' value={route.params.dados.endereco} editable={editable} onChangeText={route.params.handlers.handleEndereco} />
+                            <CampoInput label='Complemento' value={route.params.dados.complemento} editable={editable} onChangeText={route.params.handlers.handleComplemento} />
                         </View>
                         <TouchableOpacity onPress={() => { setEditable(!editable) }} style={{ flexDirection: 'column-reverse', margin: 8 }}>
                             {botao}

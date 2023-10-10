@@ -10,6 +10,12 @@ import Login from './screens/Login';
 import Registrar from './screens/Registrar';
 import Finalizar from './screens/Finalizar';
 import { useState } from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack'
+import { PaperProvider } from 'react-native-paper';
+
+const Stack = createStackNavigator();
+
 
 export default function App() {
   const [nome, setNome] = useState('Nome do Cliente Aqui')
@@ -20,7 +26,6 @@ export default function App() {
   const [complemento, setComplemento] = useState('Apartamento 123')
 
   dados = { nome, email, telefone, cep, endereco, complemento }
-  handlers = { handleNome, handleEmail, handleTelefone, handleCep, handleEndereco, handleComplemento }
 
   handleNome = (text) => setNome(text)
   handleEmail = (text) => setEmail(text)
@@ -29,10 +34,25 @@ export default function App() {
   handleEndereco = (text) => setEndereco(text)
   handleComplemento = (text) => setComplemento(text)
 
+  handlers = { handleNome, handleEmail, handleTelefone, handleCep, handleEndereco, handleComplemento }
+
   return (
     <SafeAreaProvider>
-      <Navbar />
-      <Perfil dados={dados} handlers={handlers} />
+      <PaperProvider>
+        <NavigationContainer>
+          <Stack.Navigator initialRouteName="Catalogo" screenOptions={{ header: (props) => <Navbar {...props} /> }}>
+            <Stack.Screen name="Catalogo" component={Catalogo} />
+            <Stack.Screen name="Produto" component={Produto} />
+            <Stack.Screen name="Carrinho" component={Carrinho} />
+            <Stack.Screen name="Historico" component={Historico} />
+            <Stack.Screen name="ListaDesejos" component={ListaDesejos} />
+            <Stack.Screen name="Perfil" component={Perfil} initialParams={{ dados: dados, handlers: handlers }} />
+            <Stack.Screen name="Finalizar" component={Finalizar} initialParams={{ dados: dados, handlers: handlers }} />
+            <Stack.Screen name="Login" component={Login} />
+            <Stack.Screen name="Registrar" component={Registrar} />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </PaperProvider>
     </SafeAreaProvider>
   );
 }
