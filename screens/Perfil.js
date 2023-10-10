@@ -1,19 +1,11 @@
 import { View, ScrollView, TouchableOpacity } from "react-native";
 import TituloTela from "../components/TituloTela";
-import { Dimensions } from "react-native";
-import CampoPerfil from "../components/CampoPerfil";
-import { useState } from "react";
+import CampoInput from "../components/CampoInput";
 import { Text } from "react-native-paper";
+import { useState } from "react";
 
-const Perfil = () => {
-    const windowHeight = Dimensions.get('window').height;
+const Perfil = (props) => {
     const [editable, setEditable] = useState(false)
-    const [nome, setNome] = useState('Nome do Cliente Aqui')
-    const [email, setEmail] = useState('email@email.com')
-    const [telefone, setTelefone] = useState('+55 061 98765-4321')
-    const [cep, setCep] = useState('12345-678')
-    const [endereco, setEndereco] = useState('Endereco do Cliente Aqui')
-    const [complemento, setComplemento] = useState('Apartamento 123')
 
     if (editable) {
         botao = <><View style={{ height: 56, backgroundColor: '#81C784', borderRadius: 8, alignItems: 'center', justifyContent: 'center' }}>
@@ -26,24 +18,26 @@ const Perfil = () => {
     }
 
     return (
-        <View style={{ flex: 1 }}>
-            <TituloTela titulo='Meu Perfil' />
-            <ScrollView>
-                <View style={{ marginHorizontal: 16, marginTop: 8, height: windowHeight - 132, backgroundColor: '#f0f0f0', borderRadius: 8 }}>
-                    <View style={{ padding: 8 }}>
-                        <CampoPerfil label='Nome' value={nome} editable={editable} onChangeText={(text) => setNome(text)} />
-                        <CampoPerfil label='Email' value={email} editable={editable} onChangeText={(text) => setEmail(text)} keyboardType='email-address' />
-                        <CampoPerfil label='Telefone' value={telefone} editable={editable} onChangeText={(text) => setTelefone(text)} keyboardType='phone-pad' />
-                        <CampoPerfil label='CEP' value={cep} editable={editable} onChangeText={(text) => setCep(text)} keyboardType='numeric' />
-                        <CampoPerfil label='Endereco' value={endereco} editable={editable} onChangeText={(text) => setEndereco(text)} />
-                        <CampoPerfil label='Complemento' value={complemento} editable={editable} onChangeText={(text) => setComplemento(text)} />
+        <>
+            <View style={{ flex: 1 }}>
+                <TituloTela titulo='Meu Perfil' />
+                <ScrollView contentContainerStyle={{flex:1,paddingBottom:8}}>
+                    <View style={{ flex:1, marginHorizontal: 16, marginTop: 8, backgroundColor: '#f0f0f0', borderRadius: 8 }}>
+                        <View style={{ padding: 8, flex: 1 }}>
+                            <CampoInput label='Nome' value={props.dados.nome} editable={editable} onChangeText={props.handlers.handleNome} />
+                            <CampoInput label='Email' value={props.dados.email} editable={editable} onChangeText={props.handlers.handleEmail} keyboardType='email-address' />
+                            <CampoInput label='Telefone' value={props.dados.telefone} editable={editable} onChangeText={props.handlers.handleTelefone} keyboardType='phone-pad' />
+                            <CampoInput label='CEP' value={props.dados.cep} editable={editable} onChangeText={props.handlers.handleCep} keyboardType='numeric' />
+                            <CampoInput label='Endereco' value={props.dados.endereco} editable={editable} onChangeText={props.handlers.handleEndereco} />
+                            <CampoInput label='Complemento' value={props.dados.complemento} editable={editable} onChangeText={props.handlers.handleComplemento} />
+                        </View>
+                        <TouchableOpacity onPress={() => { setEditable(!editable) }} style={{ flexDirection: 'column-reverse', margin: 8 }}>
+                            {botao}
+                        </TouchableOpacity>
                     </View>
-                    <TouchableOpacity onPress={() => { setEditable(!editable) }} style={{ flex: 1, flexDirection: 'column-reverse', margin: 8 }}>
-                        {botao}
-                    </TouchableOpacity>
-                </View>
-            </ScrollView>
-        </View>
+                </ScrollView>
+            </View>
+        </>
     );
 }
 

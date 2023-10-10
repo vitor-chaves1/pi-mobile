@@ -1,6 +1,6 @@
 import { TextInput } from "react-native-paper";
 
-const CampoPerfil = (props) => {
+const CampoInput = (props) => {
     if (props.editable) {
         corBorda = 'green'
     } else {
@@ -15,8 +15,8 @@ const CampoPerfil = (props) => {
             editable={props.editable}
             keyboardType={props.keyboardType}
             style={{ marginBottom: 8 }}
-            outlineStyle={{ borderColor: corBorda, borderRadius:8 }} />
+            outlineStyle={{ borderColor: corBorda, borderRadius: 8 }} />
     );
 }
 
-export default CampoPerfil;
+export default CampoInput;
