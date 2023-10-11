@@ -1,9 +1,11 @@
-import { View } from "react-native";
+import { TouchableOpacity, View } from "react-native";
 import { Text, IconButton } from 'react-native-paper'
+import { useNavigation } from '@react-navigation/native'
 
 const CardProduto = () => {
+    const navigation = useNavigation()
     return (
-        <View style={{ flex: 1, minHeight: 160, backgroundColor: '#f0f0f0', margin: 8,marginTop:4,marginBottom:4, borderRadius: 8, flexDirection: 'row' }}>
+        <TouchableOpacity onPress={()=>{navigation.navigate('Produto')}} style={{ flex: 1, minHeight: 160, backgroundColor: '#f0f0f0', margin: 8,marginTop:4,marginBottom:4, borderRadius: 8, flexDirection: 'row' }}>
             <View style={{ marginRight: 8 }}>
                 <View style={{ height: 125, width: 125, backgroundColor: '#d9d9d9', marginTop: 8, marginLeft: 8, borderRadius: 8 }}>
                     <Text>img</Text>
@@ -29,7 +31,7 @@ const CardProduto = () => {
                     </View>
                 </View>
             </View>
-        </View>
+        </TouchableOpacity>
     );
 }
 

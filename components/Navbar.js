@@ -15,10 +15,6 @@ const Navbar = ({ navigation }) => {
                     closeMenu
                 }} title="Catalogo" />
                 <Menu.Item onPress={() => {
-                    navigation.navigate('Produto')
-                    closeMenu
-                }} title="Produto" />
-                <Menu.Item onPress={() => {
                     navigation.navigate('Carrinho')
                     closeMenu
                 }} title="Carrinho" />
@@ -29,25 +25,17 @@ const Navbar = ({ navigation }) => {
                 <Menu.Item onPress={() => {
                     navigation.navigate('ListaDesejos')
                     closeMenu
-                }} title="ListaDesejos" />
+                }} title="Lista de Desejos" />
                 <Menu.Item onPress={() => {
                     navigation.navigate('Perfil')
                     closeMenu
                 }} title="Perfil" />
                 <Menu.Item onPress={() => {
-                    navigation.navigate('Finalizar')
-                    closeMenu
-                }} title="Finalizar" />
-                <Menu.Item onPress={() => {
                     navigation.navigate('Login')
                     closeMenu
                 }} title="Login" />
-                <Menu.Item onPress={() => {
-                    navigation.navigate('Registrar')
-                    closeMenu
-                }} title="Registrar" />
             </Menu>
-            <Appbar.Action icon="cart-outline" onPress={() => { }} />
+            <Appbar.Action icon="cart-outline" onPress={() => {navigation.navigate('Carrinho')}} />
         </Appbar.Header>
     );
 }

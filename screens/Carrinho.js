@@ -1,9 +1,9 @@
-import { ScrollView, View } from "react-native";
+import { ScrollView, TouchableOpacity, View } from "react-native";
 import TituloTela from "../components/TituloTela";
 import CardCarrinho from "../components/CardCarrinho";
 import { Text } from "react-native-paper";
 
-const Carrinho = () => {
+const Carrinho = ({navigation}) => {
     return (
         <View style={{ flex: 1 }}>
             <TituloTela titulo="Meu Carrinho" />
@@ -24,9 +24,9 @@ const Carrinho = () => {
                         <Text variant="labelMedium">Total a Pagar</Text>
                     </View>
                 </View>
-                <View style={{ flex: 1, backgroundColor: '#81C784', height: 40, marginTop: 8, alignItems: 'center', justifyContent: 'center', borderRadius: 8 }}>
+                <TouchableOpacity onPress={()=>{navigation.navigate('Finalizar')}} style={{ flex: 1, backgroundColor: '#81C784', height: 40, marginTop: 8, alignItems: 'center', justifyContent: 'center', borderRadius: 8 }}>
                     <Text variant="headlineSmall" style={{ fontWeight: 'bold' }}>FINALIZAR COMPRA</Text>
-                </View>
+                </TouchableOpacity>
             </View>
         </View>
     );
