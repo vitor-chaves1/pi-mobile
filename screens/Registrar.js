@@ -17,10 +17,10 @@ const Registrar = () => {
                 <TextInput label={'Confirmar Senha'} secureTextEntry />
             </View>
             <View style={{ flex: 0.4 }}>
-                <Button mode="outlined" buttonColor="#4CAF50" textColor="#000" style={{ borderColor: '#000', borderRadius: 8, marginBottom: 8 }} labelStyle={{ fontSize: 16, fontWeight: 'bold' }}>
+                <Button onPress={()=>navigation.navigate('Catalogo')} mode="outlined" buttonColor="#4CAF50" textColor="#000" style={{ borderColor: '#000', borderRadius: 8, marginBottom: 8 }} labelStyle={{ fontSize: 16, fontWeight: 'bold' }}>
                     Criar Conta
                 </Button>
-                <Button mode="outlined" buttonColor="#4CAF50" textColor="#000" style={{ borderColor: '#000', borderRadius: 8 }} labelStyle={{ fontSize: 16 }}>
+                <Button onPress={()=>navigation.navigate('Login')} mode="outlined" buttonColor="#4CAF50" textColor="#000" style={{ borderColor: '#000', borderRadius: 8 }} labelStyle={{ fontSize: 16 }}>
                     Já possui uma conta? Faça Login
                 </Button>
             </View>

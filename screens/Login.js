@@ -1,7 +1,7 @@
 import { View } from "react-native";
 import { Text, TextInput, Button } from "react-native-paper";
 
-const Login = () => {
+const Login = ({navigation}) => {
     return (
         <View style={{ flex: 1, backgroundColor: '#388E3C', paddingHorizontal: 16 }}>
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -14,13 +14,13 @@ const Login = () => {
                 <TextInput label={'Senha'} />
             </View>
             <View style={{ flex: 0.6 }}>
-                <Button mode="outlined" buttonColor="#4CAF50" textColor="#000" style={{ borderColor: '#000', borderRadius: 8 }} labelStyle={{ fontSize: 16 }}>Entrar</Button>
+                <Button onPress={()=>navigation.navigate('Catalogo')} mode="outlined" buttonColor="#4CAF50" textColor="#000" style={{ borderColor: '#000', borderRadius: 8 }} labelStyle={{ fontSize: 16 }}>Entrar</Button>
             </View>
             <View style={{ flex: 0.4 }}>
-                <Button mode="outlined" buttonColor="#4CAF50" textColor="#000" style={{ borderColor: '#000', borderRadius: 8, marginBottom: 8 }} labelStyle={{ fontSize: 16 }}>
+                <Button onPress={()=>navigation.navigate('Registrar')} mode="outlined" buttonColor="#4CAF50" textColor="#000" style={{ borderColor: '#000', borderRadius: 8, marginBottom: 8 }} labelStyle={{ fontSize: 16 }}>
                     Não tem uma conta? Registre-se
                 </Button>
-                <Button mode="outlined" buttonColor="#f0f0f0" textColor="#000" style={{ borderColor: '#000', borderRadius: 8 }} labelStyle={{ fontSize: 16 }}>
+                <Button onPress={()=>navigation.navigate('Catalogo')} mode="outlined" buttonColor="#f0f0f0" textColor="#000" style={{ borderColor: '#000', borderRadius: 8 }} labelStyle={{ fontSize: 16 }}>
                     Entrar com o Google
                 </Button>
             </View>
