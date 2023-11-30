@@ -13,9 +13,6 @@ const ItemPedido = (props) => {
             <View style={{ flex: 0.5, marginRight: 2, marginLeft: 2, alignItems: 'flex-end', justifyContent: 'center' }}>
                 <Text variant="bodyMedium">{props.preco}</Text>
             </View>
-            <View style={{ flex: 0.15, marginLeft: 2, alignItems: 'center', justifyContent: 'center' }}>
-                <IconButton icon={'comment-plus-outline'} onPress={() => { }} />
-            </View>
         </View>
     );
 }

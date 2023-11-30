@@ -1,32 +1,16 @@
 import { View, Text } from "react-native";
 import CardProduto from "../components/CardProduto";
 import { IconButton } from "react-native-paper";
+import TituloTela from "../components/TituloTela";
 
 const Catalogo = () => {
     return (
         <View>
-            <View style={{ flex: 1, backgroundColor: '#d9d9d9', minHeight: 28, flexDirection: 'row', justifyContent: 'space-around', paddingTop: 4, paddingBottom: 4, marginBottom:4 }}>
-                <View style={{ width: '33%', backgroundColor: '#CBCBCB', alignItems: 'center', justifyContent: 'center', flexDirection: 'row', }}>
-                    <IconButton
-                        icon="filter-variant"
-                        size={20}
-                        onPress={() => { }}
-                        disabled
-                    />
-                    <Text style={{ paddingEnd: 16 }}>Filtros</Text>
-                </View>
-                <View style={{ width: '33%', backgroundColor: '#CBCBCB', alignItems: 'center', justifyContent: 'center', flexDirection: 'row' }}>
-                    <IconButton
-                        icon="sort"
-                        size={20}
-                        onPress={() => { }}
-                        disabled
-                    />
-                    <Text style={{ paddingEnd: 16 }}>Ordenar</Text>
-                </View>
+            <TituloTela titulo={"Catálogo de Produtos"} />
+            <View>
+                <CardProduto />
+                <CardProduto />
             </View>
-            <CardProduto />
-            <CardProduto />
         </View>
     );
 }

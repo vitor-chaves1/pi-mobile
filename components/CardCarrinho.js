@@ -9,18 +9,19 @@ const CardCarrinho = () => {
             </View>
             <View style={{ flexDirection: 'column', flex: 1 }}>
                 <View style={{ flexDirection: 'row', flex: 1, justifyContent: 'center' }}>
-                    <View style={{ flex: 1, backgroundColor: '#d9d9d9', height: 48, paddingHorizontal: 4, borderRadius: 8 }}>
+                    <View style={{ flex: 1, backgroundColor: '#d9d9d9', maxHeight: 48, paddingHorizontal: 4, borderRadius: 8 }}>
                         <Text variant="labelSmall">Nome Produto Nome Produto Nome Produto Nome Produto Nome Produto Nome Produto </Text>
                     </View>
-                    <IconButton onPress={() => { }} icon='close-circle' size={32} iconColor="red" />
+                    <IconButton onPress={() => { }} icon='close-circle' size={32} iconColor="red" style={{ margin: 0 }} />
                 </View>
                 <View style={{ flexDirection: 'row', flex: 1, justifyContent: 'center', }}>
-                    <View style={{ flex: 1, backgroundColor: '#d9d9d9', height: 48, paddingHorizontal: 4, borderRadius: 8, marginRight:4, alignItems:'center' }}>
+                    <View style={{ flex: 1, backgroundColor: '#d9d9d9', paddingHorizontal: 4, borderRadius: 8, marginRight: 4, alignItems: 'center' }}>
                         <Text variant="labelSmall">Qtd.</Text>
+                        <Text variant="titleMedium">8</Text>
                     </View>
-                    <View style={{ flex: 1, backgroundColor: '#d9d9d9', height: 48, paddingHorizontal: 4, borderRadius: 8, marginLeft:4, alignItems:'center' }}>
+                    <View style={{ flex: 1, backgroundColor: '#d9d9d9', maxHeight: 48, paddingHorizontal: 4, borderRadius: 8, marginLeft: 4, alignItems: 'center' }}>
                         <Text variant="bodySmall">R$</Text>
-                        <Text variant="titleMedium">12345,67 </Text>
+                        <Text variant="titleMedium">12345,6 </Text>
                     </View>
                 </View>
             </View>

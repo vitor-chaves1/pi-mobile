@@ -23,8 +23,8 @@ const CardHistorico = () => {
                         <Text variant='headlineSmall'>Pedido N</Text>
                     </View>
                     <View style={{ flex: 0.5, backgroundColor: '#d9d9d9', borderRadius: 8, marginRight: 4, marginLeftt: 4, alignItems: 'center', justifyContent: 'center' }}>
-                        <Text variant="titleLarge">8</Text>
                         <Text variant="bodySmall">Produtos</Text>
+                        <Text variant="titleLarge">8</Text>
                     </View>
                     <View style={{ flex: 0.6, backgroundColor: '#d9d9d9', borderRadius: 8, marginLeftt: 4, alignItems: 'center', justifyContent: 'center' }}>
                         <Text variant="bodySmall">R$</Text>
@@ -44,7 +44,7 @@ const CardHistorico = () => {
                         <View style={{ flex: 0.5, marginRight: 2, marginLeft: 2, alignItems: 'flex-end', justifyContent: 'center' }}>
                             <Text variant="labelSmall">Preco</Text>
                         </View>
-                        <View style={{ flex: 0.20, marginLeft: 2, alignItems: 'center', justifyContent: 'center' }}>
+                        <View style={{ flex: 0.10, marginLeft: 2, alignItems: 'center', justifyContent: 'center' }}>
                         </View>
                     </View>
                 </View>
