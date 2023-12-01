@@ -1,10 +1,12 @@
 import { TouchableOpacity, View, Image } from "react-native";
 import { Text, IconButton } from 'react-native-paper'
 import { useNavigation } from '@react-navigation/native'
+import { useContext } from "react";
+import { DesejosContext } from "../contexts/DesejosContext";
 
 const CardProduto = (props) => {
     const navigation = useNavigation()
-
+    const { adicionarDesejo } = useContext(DesejosContext)
     return (
         <TouchableOpacity onPress={() => { navigation.navigate('Produto', { produtoId: props.produtoId }) }} style={{ flex: 1, minHeight: 140, backgroundColor: '#f0f0f0', margin: 8, marginTop: 4, marginBottom: 4, borderRadius: 8, flexDirection: 'row' }}>
             <View style={{ marginRight: 8 }}>
@@ -24,7 +26,7 @@ const CardProduto = (props) => {
                         <IconButton
                             icon="heart-plus-outline"
                             size={24}
-                            onPress={() => { }}
+                            onPress={() => { adicionarDesejo(props.nome, props.imagem, props.produtoId) }}
                             style={{ margin: 0 }}
                         />
                     </View>
