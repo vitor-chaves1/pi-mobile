@@ -3,12 +3,15 @@ import { Text, IconButton } from 'react-native-paper'
 import ContainerCollapsible from "../components/ContainerCollapsible";
 import { useContext } from "react";
 import { ProdutoContext } from "../contexts/ProdutoContext";
+import { CarrinhoContext } from "../contexts/CarrinhoContext";
 
 const Produto = ({ route }) => {
     const windowWidth = Dimensions.get('window').width - 32;
     const { produtoId } = route.params;
     const { findProduto } = useContext(ProdutoContext);
     const produto = findProduto(produtoId);
+
+    const { adicionar } = useContext(CarrinhoContext);
     return (
         <View style={{ margin: 8, marginLeft: 16, marginRight: 16, flex: 1 }}>
             <ScrollView>
@@ -23,7 +26,7 @@ const Produto = ({ route }) => {
                         <Text variant={'headlineSmall'}>R$ {produto.preco}</Text>
                     </View>
                     <View style={{ backgroundColor: '#81C784', minHeight: 64, flex: 1, marginLeft: 4, borderRadius: 8, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', }}>
-                        <TouchableOpacity style={{ flex: 1, alignItems: 'center', borderRightWidth: 1 }}>
+                        <TouchableOpacity onPress={() => adicionar(produto.nome,produto.preco,produto.imagem)}  style={{ flex: 1, alignItems: 'center', borderRightWidth: 1 }}>
                             <IconButton
                                 icon="cart-plus" iconColor={'#000'} size={32} style={{ margin: 0 }}
                             />
