@@ -1,16 +1,21 @@
-import { View, Text } from "react-native";
+import { View, FlatList } from "react-native";
 import CardProduto from "../components/CardProduto";
-import { IconButton } from "react-native-paper";
 import TituloTela from "../components/TituloTela";
+import { ProdutoContext } from '../contexts/ProdutoContext';
+import { useContext } from 'react';
 
 const Catalogo = () => {
+    const { produtos } = useContext(ProdutoContext);
     return (
         <View>
             <TituloTela titulo={"Catálogo de Produtos"} />
-            <View>
-                <CardProduto />
-                <CardProduto />
-            </View>
+            <FlatList
+                data={produtos}
+                keyExtractor={(item) => item.id}
+                renderItem={({ item }) => (
+                    <CardProduto nome={item.nome} preco={item.preco} produtoId={item.id} imagem={item.imagem} />
+                )}
+            />
         </View>
     );
 }

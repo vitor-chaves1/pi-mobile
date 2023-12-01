@@ -9,6 +9,7 @@ import Perfil from './screens/Perfil';
 import Login from './screens/Login';
 import Registrar from './screens/Registrar';
 import Finalizar from './screens/Finalizar';
+import ProdutoProvider from './contexts/ProdutoContext';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack'
 import { PaperProvider } from 'react-native-paper';
@@ -22,19 +23,21 @@ export default function App() {
   return (
     <SafeAreaProvider>
       <PaperProvider>
-        <NavigationContainer>
-          <Stack.Navigator initialRouteName="Catalogo" screenOptions={{ header: (props) => <Navbar {...props} /> }}>
-            <Stack.Screen name="Catalogo" component={Catalogo} />
-            <Stack.Screen name="Produto" component={Produto} />
-            <Stack.Screen name="Carrinho" component={Carrinho} />
-            <Stack.Screen name="Historico" component={Historico} />
-            <Stack.Screen name="ListaDesejos" component={ListaDesejos} />
-            <Stack.Screen name="Perfil" component={Perfil} />
-            <Stack.Screen name="Finalizar" component={Finalizar} />
-            <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
-            <Stack.Screen name="Registrar" component={Registrar} options={{ headerShown: false }} />
-          </Stack.Navigator>
-        </NavigationContainer>
+        <ProdutoProvider>
+          <NavigationContainer>
+            <Stack.Navigator initialRouteName="Catalogo" screenOptions={{ header: (props) => <Navbar {...props} /> }}>
+              <Stack.Screen name="Catalogo" component={Catalogo} />
+              <Stack.Screen name="Produto" component={Produto} />
+              <Stack.Screen name="Carrinho" component={Carrinho} />
+              <Stack.Screen name="Historico" component={Historico} />
+              <Stack.Screen name="ListaDesejos" component={ListaDesejos} />
+              <Stack.Screen name="Perfil" component={Perfil} />
+              <Stack.Screen name="Finalizar" component={Finalizar} />
+              <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
+              <Stack.Screen name="Registrar" component={Registrar} options={{ headerShown: false }} />
+            </Stack.Navigator>
+          </NavigationContainer>
+        </ProdutoProvider>
       </PaperProvider>
     </SafeAreaProvider>
   );
