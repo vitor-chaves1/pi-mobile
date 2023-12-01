@@ -1,4 +1,5 @@
-import { Appbar, Menu } from "react-native-paper";
+import {View} from 'react-native'
+import { Appbar, Menu, Text } from "react-native-paper";
 import { useState } from "react";
 
 const Navbar = ({ navigation }) => {
@@ -9,7 +10,7 @@ const Navbar = ({ navigation }) => {
 
     return (
         <Appbar.Header style={{ backgroundColor: '#388E3C', justifyContent: 'space-between' }}>
-            <Menu visible={visible} onDismiss={closeMenu} anchor={<Appbar.Action icon="menu" onPress={openMenu} />}>
+            <Menu visible={visible} onDismiss={closeMenu} anchor={<Appbar.Action icon="menu" iconColor="#000" onPress={openMenu} />}>
                 <Menu.Item onPress={() => {
                     navigation.navigate('Catalogo')
                     closeMenu
@@ -35,7 +36,10 @@ const Navbar = ({ navigation }) => {
                     closeMenu
                 }} title="Login" />
             </Menu>
-            <Appbar.Action icon="cart-outline" onPress={() => {navigation.navigate('Carrinho')}} />
+            <View>
+                <Text variant="headlineLarge" style={{ fontWeight: 'bold', textShadowColor: '#fff', textShadowRadius: 4 }} >Meu App</Text>
+            </View>
+            <Appbar.Action icon="cart-outline" iconColor="#000" onPress={() => {navigation.navigate('Carrinho')}} />
         </Appbar.Header>
     );
 }

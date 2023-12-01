@@ -1,17 +1,20 @@
 import { View, ScrollView } from "react-native";
 import TituloTela from "../components/TituloTela";
 import CardDesejo from "../components/CardDesejo";
+import { useContext } from "react";
+import { DesejosContext } from "../contexts/DesejosContext";
 
 const ListaDesejos = () => {
+    const { desejos } = useContext(DesejosContext)
     return (
         <View style={{ flex: 1 }}>
             <TituloTela titulo='Lista de Desejos' />
-            <ScrollView>
-                <View style={{ marginHorizontal: 16, marginTop: 8 }}>
-                    <CardDesejo img='img' nome='nome produto nome produto nome produto nome produto nome produto nome produto '/>
-                    <CardDesejo img='img' nome='nome produto nome produto nome produto nome produto nome produto nome produto '/>
-                    <CardDesejo img='img' nome='nome produto nome produto nome produto nome produto nome produto nome produto '/>
-                </View>
+            <ScrollView style={{ flex: 1 }}>
+                {desejos.map((item) => {
+                    return (
+                        <CardDesejo key={item.id} itemId={item.id} nome={item.nome} imagem={item.imagem} produtoId={item.produtoId} />
+                    )
+                })}
             </ScrollView>
         </View>
     );

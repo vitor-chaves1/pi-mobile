@@ -4,8 +4,7 @@ import CampoInput from "../components/CampoInput";
 import { Text } from "react-native-paper";
 import { useState } from "react";
 
-const Perfil = ({route}) => {
-    const { dados, handlers } = route.params;
+const Perfil = () => {
     const [editable, setEditable] = useState(false)
 
     if (editable) {
@@ -22,21 +21,21 @@ const Perfil = ({route}) => {
         <>
             <View style={{ flex: 1 }}>
                 <TituloTela titulo='Meu Perfil' />
-                <ScrollView contentContainerStyle={{flex:1,paddingBottom:8}}>
-                    <View style={{ flex:1, marginHorizontal: 16, marginTop: 8, backgroundColor: '#f0f0f0', borderRadius: 8 }}>
+                <ScrollView >
+                    <View style={{ flex: 1, marginHorizontal: 16, marginTop: 8, backgroundColor: '#f0f0f0', borderRadius: 8 }}>
                         <View style={{ padding: 8, flex: 1 }}>
-                            <CampoInput label='Nome' value={route.params.dados.nome} editable={editable} onChangeText={route.params.handlers.handleNome} />
-                            <CampoInput label='Email' value={route.params.dados.email} editable={editable} onChangeText={route.params.handlers.handleEmail} keyboardType='email-address' />
-                            <CampoInput label='Telefone' value={route.params.dados.telefone} editable={editable} onChangeText={route.params.handlers.handleTelefone} keyboardType='phone-pad' />
-                            <CampoInput label='CEP' value={route.params.dados.cep} editable={editable} onChangeText={route.params.handlers.handleCep} keyboardType='numeric' />
-                            <CampoInput label='Endereco' value={route.params.dados.endereco} editable={editable} onChangeText={route.params.handlers.handleEndereco} />
-                            <CampoInput label='Complemento' value={route.params.dados.complemento} editable={editable} onChangeText={route.params.handlers.handleComplemento} />
+                            <CampoInput label='Nome' value={''} editable={editable} onChangeText={() => { }} />
+                            <CampoInput label='Email' value={''} editable={editable} onChangeText={() => { }} keyboardType='email-address' />
+                            <CampoInput label='Telefone' value={''} editable={editable} onChangeText={() => { }} keyboardType='phone-pad' />
+                            <CampoInput label='CEP' value={''} editable={editable} onChangeText={() => { }} keyboardType='numeric' />
+                            <CampoInput label='Endereco' value={''} editable={editable} onChangeText={() => { }} />
+                            <CampoInput label='Complemento' value={''} editable={editable} onChangeText={() => { }} />
                         </View>
-                        <TouchableOpacity onPress={() => { setEditable(!editable) }} style={{ flexDirection: 'column-reverse', margin: 8 }}>
-                            {botao}
-                        </TouchableOpacity>
                     </View>
                 </ScrollView>
+                <TouchableOpacity onPress={() => { setEditable(!editable) }} style={{ flexDirection: 'column-reverse', margin: 8 }}>
+                    {botao}
+                </TouchableOpacity>
             </View>
         </>
     );
