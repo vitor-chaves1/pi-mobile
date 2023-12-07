@@ -1,8 +1,11 @@
 import { ScrollView, View } from "react-native";
 import { Text } from "react-native-paper";
 import CampoInput from "../components/CampoInput";
+import { useContext } from "react";
+import { PerfilContext } from "../contexts/PerfilContext";
 
 const Finalizar = () => {
+    const {dados} = useContext(PerfilContext)
     editable = false
     return (
         <View style={{ backgroundColor: '#81C784', flex: 1, paddingHorizontal: 16, paddingVertical: 8 }}>
@@ -10,12 +13,11 @@ const Finalizar = () => {
                 <Text variant="titleLarge" style={{ paddingBottom: 8 }}>Confirmar dados</Text>
                 <View style={{ flex: 1, backgroundColor: '#f0f0f0', borderRadius: 8, padding: 8 }}>
                     <View style={{ flex: 1 }}>
-                        <CampoInput label='Nome' value={''} editable={editable} onChangeText={() => { }} />
-                        <CampoInput label='Email' value={''} editable={editable} onChangeText={() => { }} keyboardType='email-address' />
-                        <CampoInput label='Telefone' value={''} editable={editable} onChangeText={() => { }} keyboardType='phone-pad' />
-                        <CampoInput label='CEP' value={''} editable={editable} onChangeText={() => { }} keyboardType='numeric' />
-                        <CampoInput label='Endereco' value={''} editable={editable} onChangeText={() => { }} />
-                        <CampoInput label='Complemento' value={''} editable={editable} onChangeText={() => { }} />
+                        <CampoInput label='Nome' value={dados.nome} editable={editable} style={{marginVertical:8}}/>
+                        <CampoInput label='Telefone' value={dados.telefone} editable={editable} style={{marginVertical:8}}/>
+                        <CampoInput label='CEP' value={dados.cep} editable={editable} style={{marginVertical:8}}/>
+                        <CampoInput label='Endereco' value={dados.endereco} editable={editable} style={{marginVertical:8}}/>
+                        <CampoInput label='Complemento' value={dados.complemento} editable={editable} style={{marginVertical:8}}/>
                     </View>
                 </View>
             </ScrollView>
