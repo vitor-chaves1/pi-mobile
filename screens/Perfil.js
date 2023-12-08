@@ -6,21 +6,21 @@ import { useContext, useState } from "react";
 import { useForm, Controller } from 'react-hook-form';
 import { PerfilContext } from "../contexts/PerfilContext";
 
+
 const Perfil = () => {
+    const { dados, editarPerfil } = useContext(PerfilContext)
+    const [editable, setEditable] = useState(false)
+
     const {
         control,
         handleSubmit,
         formState: { errors },
     } = useForm();
     const onSubmit = (data) => {
-        setDados(data)
-        console.log(data)
+        editarPerfil(dados.id, dados.email, data.nome, data.telefone, data.cep, data.endereco, data.complemento)
         setEditable(!editable)
     };
 
-    const { dados, setDados } = useContext(PerfilContext)
-
-    const [editable, setEditable] = useState(false)
 
     const botaoSalvar = <>
         <TouchableOpacity onPress={handleSubmit(onSubmit)} style={{ flexDirection: 'column-reverse', margin: 8 }}>

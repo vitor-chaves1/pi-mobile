@@ -3,9 +3,11 @@ import { Text, TextInput, Button, HelperText } from "react-native-paper";
 import { useForm, Controller } from 'react-hook-form';
 import { useContext } from "react";
 import { AuthContext } from "../contexts/AuthContext";
+import { PerfilContext } from "../contexts/PerfilContext";
 
 const Login = ({ navigation }) => {
     const { error, login } = useContext(AuthContext)
+    const { buscarPerfil } = useContext(PerfilContext)
 
     const {
         control,
@@ -13,6 +15,7 @@ const Login = ({ navigation }) => {
         formState: { errors },
     } = useForm();
     const onSubmit = (data) => {
+        buscarPerfil(data.email)
         login(data.email, data.senha)
     };
 

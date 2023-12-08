@@ -3,9 +3,11 @@ import { Text, TextInput, Button, HelperText } from "react-native-paper";
 import { useForm, Controller } from 'react-hook-form';
 import { useContext } from "react";
 import { AuthContext } from "../contexts/AuthContext";
+import { PerfilContext } from "../contexts/PerfilContext";
 
 const Registrar = ({ navigation }) => {
     const { error, register } = useContext(AuthContext)
+    const { criarPerfil } = useContext(PerfilContext)
 
     const {
         control,
@@ -13,6 +15,7 @@ const Registrar = ({ navigation }) => {
         formState: { errors },
     } = useForm();
     const onSubmit = (data) => {
+        criarPerfil(data.email, data.nome)
         register(data.nome, data.email, data.senha)
     };
 
