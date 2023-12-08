@@ -1,8 +1,11 @@
 import { ScrollView, View } from "react-native";
 import { Text, TextInput, Button, HelperText } from "react-native-paper";
 import { useForm, Controller } from 'react-hook-form';
+import { useContext } from "react";
+import { AuthContext } from "../contexts/AuthContext";
 
 const Login = ({ navigation }) => {
+    const { error, login } = useContext(AuthContext)
 
     const {
         control,
@@ -10,8 +13,7 @@ const Login = ({ navigation }) => {
         formState: { errors },
     } = useForm();
     const onSubmit = (data) => {
-        console.log(data)
-        navigation.navigate('Perfil')
+        login(data.email, data.senha)
     };
 
 
@@ -69,6 +71,9 @@ const Login = ({ navigation }) => {
                         <HelperText type="error" visible={errors.senha} style={{ color: '#821901' }}>
                             {errors.senha ? errors.senha.message : ''}
                         </HelperText>
+                        <HelperText type="error" visible={true} style={{ color: '#821901' }} >
+                            {error}
+                        </HelperText>
                     </View>
                 </View>
                 <View>
@@ -77,7 +82,10 @@ const Login = ({ navigation }) => {
                     </Button>
                 </View>
                 <View>
-                    <Button onPress={() => navigation.navigate('Registrar')} mode="outlined" buttonColor="#4CAF50" textColor="#000" style={{ borderColor: '#000', borderRadius: 8, marginBottom: 8 }} labelStyle={{ fontSize: 16 }}>
+                    <Button onPress={() => {
+                        navigation.navigate('Registrar')
+                    }}
+                        mode="outlined" buttonColor="#4CAF50" textColor="#000" style={{ borderColor: '#000', borderRadius: 8, marginBottom: 8 }} labelStyle={{ fontSize: 16 }}>
                         Não tem uma conta? Registre-se
                     </Button>
                 </View>
