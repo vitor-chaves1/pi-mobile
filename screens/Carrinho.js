@@ -2,20 +2,18 @@ import { ScrollView, TouchableOpacity, View } from "react-native";
 import TituloTela from "../components/TituloTela";
 import CardCarrinho from "../components/CardCarrinho";
 import { Text } from "react-native-paper";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { CarrinhoContext } from '../contexts/CarrinhoContext'
 
 const Carrinho = ({ navigation }) => {
-    const { carrinho } = useContext(CarrinhoContext);
-    let total = 0
+    const { carrinho, total, listaProdutos } = useContext(CarrinhoContext);
     return (
         <View style={{ flex: 1 }}>
             <TituloTela titulo="Meu Carrinho" />
             <ScrollView style={{ flex: 1 }}>
                 {carrinho.map((item) => {
-                    total += item.preco
                     return (
-                        <CardCarrinho key={item.id} itemId={item.id} nome={item.nome} preco={item.preco} imagem={item.imagem}/>
+                        <CardCarrinho key={item.id} itemId={item.id} nome={item.nome} preco={item.preco} imagem={item.imagem} />
                     )
                 })}
             </ScrollView>
@@ -30,7 +28,16 @@ const Carrinho = ({ navigation }) => {
                         <Text variant="labelMedium">Total a Pagar</Text>
                     </View>
                 </View>
-                <TouchableOpacity onPress={() => { navigation.navigate('Finalizar') }} style={{ flex: 1, backgroundColor: '#81C784', height: 40, marginTop: 8, alignItems: 'center', justifyContent: 'center', borderRadius: 8 }}>
+                <TouchableOpacity
+                    onPress={() => {
+                        if (carrinho.length == 0) {
+                            alert('Carrinho Vazio\nAdicione Produtos ao Carrinho')
+                        } else {
+                            listaProdutos()
+                            navigation.navigate('Finalizar')
+                        }
+                    }}
+                    style={{ flex: 1, backgroundColor: '#81C784', height: 40, marginTop: 8, alignItems: 'center', justifyContent: 'center', borderRadius: 8 }}>
                     <Text variant="headlineSmall" style={{ fontWeight: 'bold' }}>FINALIZAR COMPRA</Text>
                 </TouchableOpacity>
             </View>

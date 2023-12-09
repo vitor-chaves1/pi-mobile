@@ -6,6 +6,7 @@ import DesejosProvider from './contexts/DesejosContext';
 import PerfilProvider from './contexts/PerfilContext';
 import AuthProvider from './contexts/AuthContext';
 import MainNavigation from './routes/MainNavigation';
+import PedidosProvider from './contexts/PedidosContext';
 
 export default function App() {
 
@@ -17,7 +18,9 @@ export default function App() {
             <DesejosProvider>
               <AuthProvider>
                 <PerfilProvider>
-                  <MainNavigation />
+                  <PedidosProvider>
+                    <MainNavigation />
+                  </PedidosProvider>
                 </PerfilProvider>
               </AuthProvider>
             </DesejosProvider>
