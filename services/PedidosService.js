@@ -14,4 +14,24 @@ const incluir = async (produtos, preco, perfil) => {
     }
 };
 
-export { incluir };
+const buscar = async (id) => {
+    try {
+        const response = await axios.get(`${BASE_URL}/Pedidos/data.json`);
+        const pedidos = response.data
+        let historico = []
+        let idHistorico = 0
+        for (const item in pedidos) {
+            const perfil_Id = pedidos[item].perfil.id
+            if (perfil_Id === id) {
+                idHistorico++
+                const itemHistorico = { id: idHistorico, produtos: pedidos[item].produtos, preco: pedidos[item].preco }
+                historico.push(itemHistorico)
+            }
+        }
+        return historico
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export { incluir, buscar };

@@ -1,10 +1,10 @@
 import { createContext, useState } from 'react';
-import { incluir } from '../services/PedidosService';
+import { incluir, buscar } from '../services/PedidosService';
 
 const PedidosContext = createContext();
 
 const PedidosProvider = ({ children }) => {
-    //const [pedidos, setPedidos] = useState([])
+    const [historico, setHistorico] = useState([])
 
     const criarPedido = async (produtos, preco, perfil) => {
         try {
@@ -14,8 +14,16 @@ const PedidosProvider = ({ children }) => {
         }
     }
 
+    const buscarHistorico = async (id) => {
+        try {
+            const dados = await buscar(id)
+            setHistorico(dados)
+        } catch (error) {
+
+        }
+    }
     return (
-        <PedidosContext.Provider value={{ criarPedido }}>
+        <PedidosContext.Provider value={{ criarPedido, historico, buscarHistorico }}>
             {children}
         </PedidosContext.Provider>
     );

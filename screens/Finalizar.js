@@ -12,6 +12,10 @@ const Finalizar = ({ navigation }) => {
     const { criarPedido } = useContext(PedidosContext)
 
     const handleFinalizar = () => {
+        if (total == 0) {
+            alert('Erro!\nPor favor encher o Carrinho')
+            return
+        }
         if (dados.endereco) {
             criarPedido(produtos, total, dados)
             alert('Pedido Realizado com Sucesso')
