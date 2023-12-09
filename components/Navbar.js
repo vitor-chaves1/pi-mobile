@@ -1,9 +1,11 @@
-import {View} from 'react-native'
+import { View } from 'react-native'
 import { Appbar, Menu, Text } from "react-native-paper";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from '../contexts/AuthContext';
 
 const Navbar = ({ navigation }) => {
     const [visible, setVisible] = useState(false);
+    const { usuario, logout } = useContext(AuthContext)
     const openMenu = () => setVisible(true);
     const closeMenu = () => setVisible(false);
 
@@ -31,15 +33,20 @@ const Navbar = ({ navigation }) => {
                     navigation.navigate('Perfil')
                     closeMenu
                 }} title="Perfil" />
-                <Menu.Item onPress={() => {
-                    navigation.navigate('Login')
-                    closeMenu
-                }} title="Login" />
+                <Menu.Item
+                    style={{ backgroundColor: '#ff4f64', borderRadius: 8, marginHorizontal: 8 }}
+                    onPress={() => {
+                        logout()
+                        closeMenu
+                    }}
+                    title="Logout"
+                    trailingIcon={'logout'}
+                />
             </Menu>
             <View>
                 <Text variant="headlineLarge" style={{ fontWeight: 'bold', textShadowColor: '#fff', textShadowRadius: 4 }} >Meu App</Text>
             </View>
-            <Appbar.Action icon="cart-outline" iconColor="#000" onPress={() => {navigation.navigate('Carrinho')}} />
+            <Appbar.Action icon="cart-outline" iconColor="#000" onPress={() => { navigation.navigate('Carrinho') }} />
         </Appbar.Header>
     );
 }

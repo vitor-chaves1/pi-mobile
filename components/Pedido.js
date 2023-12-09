@@ -1,13 +1,19 @@
-import { View } from "react-native";
+import { ScrollView } from "react-native";
 import ItemPedido from "./ItemPedido";
 
-const Pedido = () => {
+const Pedido = (props) => {
+    const lista = []
+    let cont = 0
+    props.produtos.forEach(item => {
+        cont++
+        lista.push({ id: cont, produto: item })
+    });
     return (
-        <View style={{ flex: 1, flexDirection: 'column', backgroundColor: '#f0f0f0', padding: 8, paddingTop: 0, marginBottom: 8, borderBottomLeftRadius: 8, borderBottomRightRadius: 8, }}>
-            <ItemPedido qtd={2} produto={'Nome produto 1'} preco={'12345,67'} />
-            <ItemPedido qtd={3} produto={'Nome produto 2'} preco={'12345,67'} />
-            <ItemPedido qtd={2} produto={'Nome produto 3'} preco={'12345,67'} />
-        </View>
+        <ScrollView style={{ flex: 1, flexDirection: 'column', backgroundColor: '#f0f0f0', padding: 8, paddingTop: 0, marginBottom: 8, borderBottomLeftRadius: 8, borderBottomRightRadius: 8, }}>
+            {lista.map((item) => (
+                <ItemPedido key={item.id} id={item.id} produto={item.produto}/>
+            ))}
+        </ScrollView>
     );
 }
 

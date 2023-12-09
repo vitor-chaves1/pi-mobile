@@ -4,6 +4,8 @@ const CarrinhoContext = createContext();
 
 const CarrinhoProvider = ({ children }) => {
     const [carrinho, setCarrinho] = useState([]);
+    const [produtos, setProdutos] = useState([])
+    const [total, setTotal] = useState(0)
 
     const adicionar = (nome, preco, imagem) => {
         if (carrinho.length != 0) {
@@ -15,6 +17,7 @@ const CarrinhoProvider = ({ children }) => {
 
         const carrinhoNovo = { id: ultimoId + 1, nome, preco, imagem };
         setCarrinho([...carrinho, carrinhoNovo]);
+        setTotal(total + carrinhoNovo.preco)
     };
 
     const buscar = (id) => {
@@ -30,13 +33,30 @@ const CarrinhoProvider = ({ children }) => {
     };
 
     const remover = (id) => {
+        const produto = buscar(id)
         const listaAtualizada = carrinho.filter((carrinho) => carrinho.id !== id);
         setCarrinho(listaAtualizada);
+        setTotal(total - produto.preco)
     };
+
+    const listaProdutos = () => {
+        const listaAtualizada = []
+        for (produto in carrinho) {
+            listaAtualizada.push(carrinho[produto].nome)
+        }
+        setProdutos(listaAtualizada)
+        return produtos
+    }
+
+    const limparCarrinho = () => {
+        setCarrinho([])
+        setProdutos([])
+        setTotal(0)
+    }
 
     return (
         <CarrinhoContext.Provider
-            value={{ carrinho, adicionar, buscar, atualizar, remover }}>
+            value={{ carrinho, adicionar, buscar, atualizar, remover, total, produtos, listaProdutos, limparCarrinho }}>
             {children}
         </CarrinhoContext.Provider>
     );

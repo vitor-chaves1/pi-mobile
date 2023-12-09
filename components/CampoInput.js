@@ -14,8 +14,9 @@ const CampoInput = (props) => {
             value={props.value}
             editable={props.editable}
             keyboardType={props.keyboardType}
-            style={{ marginBottom: 8 }}
-            outlineStyle={{ borderColor: corBorda, borderRadius: 8 }} />
+            outlineStyle={{ borderColor: corBorda, borderRadius: 8 }} 
+            style={props.style}
+            />
     );
 }
 
